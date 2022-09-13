@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Tilauslomake</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+          <h1>
+            <i>Uusi suosikki</i>
+          </h1>
+        </header>
+        <nav class="center">
+          <ul>
+            <li class="bordered">
+              <a href="index.html">index</a>
+            </li>
+            <li class="bordered">
+              <a href="update.html">update</a>
+            </li>
+            <li class="bordered">
+              <a href="new.html">new</a>
+            </li>
+          </ul>
+        </nav>
+        <form action="strong" method="POST">
+          <h2>Lisää tiedot uusimmasta toivelistan pelistä</h2>
+        </form>
+          <h4>Perustiedot</h4>
+        <fieldset>
+          <h3>Nimi</h3>
+            <input type="text" name="Nimi" id="Nimi" placeholder="Syötä tähän pelin nimi">
+          <h3>Julkaisija</h3>
+            <input type="text" name="Julkaisija" id="Julkaisija" placeholder="Nimi">
+            <input type="text" name="Mielipide" id="Mielipide" placeholder="Mitä pidät julkaisijasta?">
+          <h3>Alusta</h3>
+            <select name="Alusta" id="Alusta">
+              <option value="">Xbox</option>
+              <option value="">Playstation</option>
+              <option value="">Pc</option>
+              <option value="">Nintendo</option>
+            </select>
+        </fieldset>
+          <h4>Tarkemmat tiedot</h4>
+        <fieldset>
+          <h3>Toivelistalle lisäys päivämäärä</h3>
+            <input type="date" name="Aika" id="Aika">
+          <h3>Peligenre</h3>
+            <input type="number" name="Määrä" id="Määrä">
+        </fieldset>
+        <fieldset>
+           <textarea placeholder="Syötä tähän lisätietoja"></textarea>
+        </fieldset>
+          <h3>
+            Tietoja käsitellään <br /> luottamuksellisesti
+          </h3>
+          <button type="button" class="btn btn-primary">Lähetä</button>
+          <script src="asyncdefer"></script>
+        <footer>&copy;<strong>Aatu Inkiläinen</strong></footer>
+    </body>
+</html>
