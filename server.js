@@ -23,7 +23,7 @@ app.use(express.static('public'));
 
 //Muodostetaan tietokanta yhteys
 // Luo vakio connecrionstringille
-const uri = 'mongodb+srv://AATUpro:<password>@cluster0.pusklqr.mongodb.net/?retryWrites=true&w=majority'
+const uri = 'mongodb+srv://AATUpro:Ade2233iiSd1199@cluster0.pusklqr.mongodb.net/?retryWrites=true&w=majority'
 //Muodostetaan yhteys tietokantaan
 mongoose.connect(uri, { useUnifiedTopology: true, UseNewUrlParser:true})
 
@@ -34,5 +34,18 @@ db.once('open', function() {
     console.log('Tietokantayhteys avattu');
 })
 
+//Kirjoita get-funktio, req.query toimii nyt
+app.get('/books', function(req,res) {
+    //Hae kirjat tietotokannasta
+  //Hae kirjat tietokannasta
+    book.find(req.query, function( err, result) { //tyhjät {} hakuehdossa tuo kaikki, req.query rajaa hakua
+        if (err) {
+            res.send(err)
+        } else {
+            res.send(result);
+        }
+    })
+    })
+        
 //Laitetaan palvelin kuuntelemaan porttia 8080
 const server = app.listen(8080, function(){});

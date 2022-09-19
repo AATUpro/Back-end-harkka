@@ -156,6 +156,9 @@ figure {
 fieldset {
     text-align: center;
 }
+form {
+    text-align: center;
+}
 @media screen and (max-width: 500px) {
     body {
         background-color: rgb(255, 255, 255);
