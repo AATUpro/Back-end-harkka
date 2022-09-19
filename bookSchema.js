@@ -15,7 +15,7 @@ let book = new bookSchema ( {
         type: String
     },
     read: {
-        type: boolean
+        type: Boolean
     }
 },
     { collection: 'books'}
