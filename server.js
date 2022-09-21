@@ -1,42 +1,27 @@
-// Ota express käyttöön
 const express =  require('express');
 const app = express();
 
-// Ota mongoose käyttöön -> tietokantayhteys
 const mongoose = require('mongoose');
 
-//Ota books käyttöön - muista vaihtaa harkassa oikea tiedoston nimi
-const book = require('./bookSchema.js');
+const game = require('./gameSchema.js');
 
-//Ota mongodb käyttöön -- palataan asiaan, tarviiko asentaa erikseen
 const mongodb = require('mongodb');
 
-//Ota bodyparser käyttöön lomakkeen käsittelyä varten
 const bodyparser = require('body-parser');
 
-//Aseta määritykset express-palvelimelle
-//Ota käyttöön public-tiedosto
 app.use(express.static('public'));
-//Ota käyttöön bodyparser
 app.use(bodyparser.urlencoded({extended:false}));
 
-//Muodostetaan tietokantayhteys
-// Luo vakio connectionstringille
 const uri = 'mongodb+srv://AATUpro:@cluster0.pusklqr.mongodb.net/bookDb?retryWrites=true&w=majority'
-// Muodostetaan yhteys tietokantaan
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser:true})
 
-// Luodaan vakio tietokantayhteydelle
 const db = mongoose.connection
-// Näytä ilmoitus, jos yhteys ok
 db.once('open', function() {
     console.log('Tietokantayhteys avattu');
 })
 
-// Kirjoita get-funktio, req.query toimii nyt
-app.get('/books', function(req,res) {
-     // Hae kirjat tietokannasta
-    book.find(req.query, function( err, result) { //tyhjät {} hakuehdossa tuo kaikki, req.query rajaa hakua
+app.get('/gamelibrary', function(req,res) {
+    game.find(req.query, function( err, result) {
         if (err) {
             res.send(err)
         } else {
@@ -45,19 +30,13 @@ app.get('/books', function(req,res) {
     })
     })
 
-// Kirjan lisäys post-funktio
-app.post('/newBook', function (req, res) {
-    //console.log(req.body)
-    //Varmistetaan, ettei ole ID:tä ja poistetaan jos on.
+app.post('/newGame', function (req, res) {
     delete req.body._id; 
-    //Lisätään collectioniin uusi kirja
-    db.collection('books').insertOne(req.body);
-    res.send('Book is added with following data: ' + JSON.stringify(req.body)); //req.body on JSON-objekti, joten muutetaan se Stringiksi ennen palautusta.
+    db.collection('gamelibrary').insertOne(req.body);
+    res.send('Game is added with following data: ' + JSON.stringify(req.body));
 })
 
-// Poistofunktio
-app.post('/deleteBook', function (req, res) {
-    //Poistetaan collectionista kirja
+app.post('/deleteGame', function (req, res) {
     db.collection('books').deleteOne( { _id: new mongodb.ObjectId(req.body._id)}, function( err, result){
         if ( err ) {
             res.send('Error deleting with following data: ' + err);
@@ -68,14 +47,12 @@ app.post('/deleteBook', function (req, res) {
    
 })
 
-// Päivitysfunktio
-app.post('/updateBook', function(req,res){
-    //Päivitetän collectionista kirja. Kolme parametria: ID, mitä päivitetään ja funktio virheenkäsittelyyn ja palautteeseen.
-    db.collection('books').updateOne({_id:new mongodb.ObjectID(req.body._id)},{$set:{title:req.body.title, author:req.body.author, publisher:req.body.publisher}},function(err,results){
+app.post('/updateGame', function(req,res){
+    db.collection('gamelibary').updateOne({_id:new mongodb.ObjectID(req.body._id)},{$set:{title:req.body.title, author:req.body.author, publisher:req.body.publisher}},function(err,results){
         if ( err ) {
             res.send('Error updating: ' + err);
         } else {
-            res.send('Book is updated with following id: ' + req.body._id + ' and following data: ' + JSON.stringify(req.body) );
+            res.send('Game is updated with following id: ' + req.body._id + ' and following data: ' + JSON.stringify(req.body) );
         }
     });
    
