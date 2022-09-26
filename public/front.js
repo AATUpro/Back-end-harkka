@@ -1,75 +1,95 @@
-// Luo taulukon kirjoista etusivulle
-function readBook(){
+function readGame(){
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "/books",true);
+    xmlhttp.open("GET", "/gamelibrary",true);
     xmlhttp.send();
 
     xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-    const books = JSON.parse(xmlhttp.responseText); //Huom! Palauttaa hakasulkeet JSONin ympärillä, slice poistaa ensimmäisen ja viimeisen merkin. Toimii yhdellä tiedolla, ei kahdella.
-     // Luodaan taulukko, jossa käyttäjät näytetään
+    const gamelibrary = JSON.parse(xmlhttp.responseText);
      let table = document.createElement('table');
-     // Silmukka kirjojen läpikäymiseen
-     for (let i = 0; i < books.length; i++) {
+     for (let i = 0; i < gamelibrary.length; i++) {
       let newRow = document.createElement('tr');
-      newRow.appendChild(createCell(books[i].title));
-      newRow.appendChild(createCell(books[i].author));
-      newRow.appendChild(createCell(books[i].publisher));
-      //Luodaan päivitä-painike
-      newRow.appendChild(createForm(books[i], 'update'));
-      //Luodaan poista-painike
-      newRow.appendChild(createForm(books[i], 'delete'));
+      newRow.appendChild(createCell(gamelibrary[i].name));
+      newRow.appendChild(createCell(gamelibrary[i].publisher));
+      newRow.appendChild(createCell(gamelibrary[i].platform));
+      newRow.appendChild(createCell(gamelibrary[i].added));
+      newRow.appendChild(createCell(gamelibrary[i].genre));
+      newRow.appendChild(createCell(gamelibrary[i].details));
+      newRow.appendChild(createCell(gamelibrary[i].released));
+      newRow.appendChild(createForm(gamelibrary[i], 'update'));
+      newRow.appendChild(createForm(gamelibrary[i], 'delete'));
       table.appendChild(newRow);
      }
      document.getElementById("demo").appendChild(table);
 
         }
     }
-// Etusivun taulukon luonnissa kutsutaan funktiota, ettei tarvi kirjoittaa auki jokaiseen solun luontiin erikseen.
+
 function createCell(value) {
   let newCell = document.createElement('td');
   newCell.innerHTML = value;
   return newCell;
 }
     }
-    readBook();
+    readGame();
 
-// Luo päivitys, lisäys ja poistoformit
-function createForm(book, action) {
+function createForm(game, action) {
   let newCell = document.createElement('td');
   let form = document.createElement('form');
   form.method = (action == 'delete') ? 'POST' : 'GET';
-  // Ternääri (ternatry) operaatio, ensimmäinen vaihtoehto true ja jälkimmäinen false. Vertaa IF
-  form.action = (action == 'delete') ? '/deleteBook' : '/updateBook.html';
-  //Lisää piilokenttä id:lle
+  form.action = (action == 'delete') ? '/deleteGame' : '/updateGame.html';
+  
   let input = document.createElement('input');
-  input.value = book._id;
+  input.value = game._id;
   input.type = 'hidden'
   input.name = '_id'
   form.appendChild(input);
-  // Jos update -> lisää lomakkeelle muutkin tiedot
-  // lisätään kirjan nimi
+
   input = document.createElement('input');
-  input.value = book.title;
+  input.value = game.name;
   input.type = 'hidden'
-  input.name = 'title'
+  input.name = 'name'
   form.appendChild(input);
-  // lisätään kirjoittajan nimi
+
   input = document.createElement('input');
-  input.value = book.author;
-  input.type = 'hidden'
-  input.name = 'author'
-  form.appendChild(input);
-  // lisätään julkaisijan nimi
-  input = document.createElement('input');
-  input.value = book.publisher;
+  input.value = game.publisher;
   input.type = 'hidden'
   input.name = 'publisher'
   form.appendChild(input);
-  // Lisää painike
+
+  input = document.createElement('input');
+  input.value = game.platform;
+  input.type = 'hidden'
+  input.name = 'platform'
+  form.appendChild(input);
+
+  input = document.createElement('input');
+  input.value = game.added;
+  input.type = 'hidden'
+  input.name = 'added'
+  form.appendChild(input);
+
+  input = document.createElement('input');
+  input.value = game.genre;
+  input.type = 'hidden'
+  input.name = 'genre'
+  form.appendChild(input);
+
+  input = document.createElement('input');
+  input.value = game.details;
+  input.type = 'hidden'
+  input.name = 'details'
+  form.appendChild(input);
+
+  input = document.createElement('input');
+  input.value = game.released;
+  input.type = 'hidden'
+  input.name = 'released'
+  form.appendChild(input);
+
   input = document.createElement('input');
   input.type = 'submit';
-  input.value = (action == 'delete') ? 'Delete book' : 'Update user';
+  input.value = (action == 'delete') ? 'Delete game' : 'Update game';
   form.appendChild(input)
   newCell.appendChild(form);
   return newCell;

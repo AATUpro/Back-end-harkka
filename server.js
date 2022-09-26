@@ -12,7 +12,7 @@ const bodyparser = require('body-parser');
 app.use(express.static('public'));
 app.use(bodyparser.urlencoded({extended:false}));
 
-const uri = 'mongodb+srv://AATUpro:@cluster0.pusklqr.mongodb.net/bookDb?retryWrites=true&w=majority'
+const uri = 'mongodb+srv://AATUpro:@cluster0.pusklqr.mongodb.net/gamelibrary?retryWrites=true&w=majority'
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser:true})
 
 const db = mongoose.connection
@@ -37,18 +37,18 @@ app.post('/newGame', function (req, res) {
 })
 
 app.post('/deleteGame', function (req, res) {
-    db.collection('books').deleteOne( { _id: new mongodb.ObjectId(req.body._id)}, function( err, result){
+    db.collection('gamelibrary').deleteOne( { _id: new mongodb.ObjectId(req.body._id)}, function( err, result){
         if ( err ) {
             res.send('Error deleting with following data: ' + err);
         } else {
-            res.send('Book is deleted with following id: ' + req.body._id);
+            res.send('Game is deleted with following id: ' + req.body._id);
         }
     });
    
 })
 
 app.post('/updateGame', function(req,res){
-    db.collection('gamelibary').updateOne({_id:new mongodb.ObjectID(req.body._id)},{$set:{title:req.body.title, author:req.body.author, publisher:req.body.publisher}},function(err,results){
+    db.collection('gamelibrary').updateOne({_id:new mongodb.ObjectID(req.body._id)},{$set:{name:req.body.name, publisher:req.body.publisher, platform:req.body.platform, added:req.body.added, genre:req.body.genre, details:req.body.details, released:req.body.released}},function(err,results){
         if ( err ) {
             res.send('Error updating: ' + err);
         } else {
@@ -59,5 +59,4 @@ app.post('/updateGame', function(req,res){
 })
 
 
-//Laitetaan palvelin kuuntelemaan porttia 8080
 const server = app.listen(8080, function(){});

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <html lang="fi">
+        <head>
+          <title>Tilauslomake</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css" media="screen">
+        </head>
+        <body>
+            <header>
+              <h1>
+                <i>Uusi suosikki</i>
+              </h1>
+            </header>
+            <nav class="center">
+              <ul>
+                <li class="bordered">
+                  <a href="index.html">index</a>
+                </li>
+                <li class="bordered">
+                  <a href="updateGame.html">update</a>
+                </li>
+                <li class="bordered">
+                  <a href="newGame.html">new</a>
+                </li>
+              </ul>
+            </nav>
+            <h2>Lisää tiedot uusimmasta toivelistan pelistä</h2>
+            <h4>Perustiedot</h4>
+            <form action="">
+              <h3>Nimi</h3>
+                <input type="text" placeholder="Syötä tähän pelin nimi"  id="nimi">
+              <h3>Julkaisija</h3>
+                <input type="text" placeholder="Nimi" id="julkaisija">
+                <input type="text" placeholder="Mitä pidät julkaisijasta?" id="mielipide">
+              <h3>Alusta</h3>
+                <select name="Alusta" id="alusta">
+                  <option value="xbox">Xbox</option>
+                  <option value="playstation">Playstation</option>
+                  <option value="pc">Pc</option>
+                  <option value="nintendo">Nintendo</option>
+                </select>
+              <h3>Toivelistalle lisäyspäivämäärä</h3>
+                <input type="date" id="aika">
+              <h3>Peligenre</h3>
+                <input type="number" id="määrä">
+              <h4>Tarkemmat tiedot</h4>
+                <textarea placeholder="Syötä tähän lisätietoja"></textarea>
+              <button id="LisaaPeli">Lisää</button>
+            </form>
+              <h3>Tallennetut peli</h3>
+              <table id="pelitTable">
+                <tr>
+                    <th>Nimi</th>
+                    <th>Julkaisija</th>
+                    <th>Alusta</th>
+                    <th>Toivelistalle lisäyspäivämäärä</th>
+                    <th>Peligenre</th>
+                    <th>Tarkemmat tiedot</th>
+                </tr>
+            </table>
+            <script src="peli.js"></script>
+            <footer>&copy;<strong>Aatu Inkiläinen</strong></footer>
+        </body>
+    </html>

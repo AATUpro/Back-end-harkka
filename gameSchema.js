@@ -4,7 +4,7 @@ const gameSchema = mongoose.Schema;
 
 let game = new gameSchema ( {
     name: {
-    type: String
+      type: String
     },
     publisher: {
       type: String
@@ -13,7 +13,7 @@ let game = new gameSchema ( {
       type: String
     },
     added: {
-      type: Boolean
+      type: Date
     },
     genre: {
       type: String
@@ -22,7 +22,7 @@ let game = new gameSchema ( {
       type: String
     },
     released: {
-      type: Boolean
+      type: Date
     }
 },
     { collection: 'gamelibrary'}

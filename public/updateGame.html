@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Book</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Päivitä pelin tiedot</h1>
+    <ul>
+        <li class="bordered">
+          <a href="index.html">index</a>
+        </li>
+        <li class="bordered">
+          <a href="updateGame.html">update</a>
+        </li>
+        <li class="bordered">
+          <a href="newGame.html">new</a>
+        </li>
+      </ul>
+    <form method="POST" action="/updateGame">
+      <label for="name">Name<input type="text" name="name" id="name"</label>
+      <label for="publisher">Publisher<input type="text" name="publisher" id="publisher"</label>
+      <label for="platform">Platform<input type="text" name="platform" id="platform"</label>
+      <label for="added">Added<input type="date" name="added" id="added"</label>
+      <label for="genre">Genre<input type="text" name="genre" id="genre"</label>
+      <label for="details">Details<input type="text" name="details" id="details"</label>
+      <label for="released">Released<input type="date" name="released" id="released"</label>
+      <input type="submit" value="Update">
+    </form>
+    <script src="update.js" async defer></script>
+    <script src="front.js" async defer></script>
+</body>
+</html>
