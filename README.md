@@ -1,3 +1,2 @@
 # Back-end-harkka
-GIT testi
-GIT TESTITESTITESTITESTI
+Tästä tiedostosta kaikki alkoi

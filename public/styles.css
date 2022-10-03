@@ -1,3 +1,7 @@
+td {
+    border: 1px solid black;
+    padding: 5px;
+}
 body {
     background: rgb(179, 52, 37);
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
