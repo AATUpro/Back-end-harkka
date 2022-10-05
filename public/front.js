@@ -89,7 +89,7 @@ function createForm(game, action) {
 
   input = document.createElement('input');
   input.type = 'submit';
-  input.value = (action == 'delete') ? 'Delete game' : 'Update game';
+  input.value = (action == 'delete') ? 'Poista peli' : 'Päivitä peli';
   form.appendChild(input)
   newCell.appendChild(form);
   return newCell;
