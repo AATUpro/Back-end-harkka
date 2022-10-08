@@ -1,6 +1,6 @@
 function readGame(){
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "/gamelibrary",true);
+    xmlhttp.open("GET", "/gamelibrary",true);   //gamelibrary on MongoDb tietokannan nimi
     xmlhttp.send();
 
     xmlhttp.onreadystatechange = function() {
@@ -8,8 +8,8 @@ function readGame(){
     const gamelibrary = JSON.parse(xmlhttp.responseText);
      let table = document.createElement('table');
      for (let i = 0; i < gamelibrary.length; i++) {
-      let newRow = document.createElement('tr');
-      newRow.appendChild(createCell(gamelibrary[i].name));
+      let newRow = document.createElement('tr');    // luo uusi taulukon rivi
+      newRow.appendChild(createCell(gamelibrary[i].name));    // Tässä on alekkain MongoDb kentät
       newRow.appendChild(createCell(gamelibrary[i].publisher));
       newRow.appendChild(createCell(gamelibrary[i].platform));
       newRow.appendChild(createCell(gamelibrary[i].added));
@@ -33,13 +33,13 @@ function createCell(value) {
     }
     readGame();
 
-function createForm(game, action) {
+function createForm(game, action) {   // Päivittämis ja poistamis -komentoja
   let newCell = document.createElement('td');
   let form = document.createElement('form');
   form.method = (action == 'delete') ? 'POST' : 'GET';
   form.action = (action == 'delete') ? '/deleteGame' : '/updateGame.html';
   
-  let input = document.createElement('input');
+  let input = document.createElement('input');  // Tässä on alekkain MongoDb kentät
   input.value = game._id;
   input.type = 'hidden'
   input.name = '_id'

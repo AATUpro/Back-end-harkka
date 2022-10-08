@@ -1,4 +1,4 @@
-document.body.onload = function() {
+document.body.onload = function() { // Tässä on alekkain MongoDb kentät päivitystä varten. Funktiot keräävät id avulla oikean kentän.
     document.getElementById('name').value = getParam('name');
     document.getElementById('publisher').value = getParam('publisher');
     document.getElementById('platform').value = getParam('platform');

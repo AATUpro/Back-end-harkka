@@ -1,4 +1,4 @@
-const express =  require('express');
+const express =  require('express');    // Pakettien asennus
 const app = express();
 
 const mongoose = require('mongoose');
@@ -7,7 +7,7 @@ const game = require('./gameSchema.js');
 
 const mongodb = require('mongodb');
 
-const bodyparser = require('body-parser');
+const bodyparser = require('body-parser');  // Pakettien asennus
 
 app.use(express.static('public'));
 app.use(bodyparser.urlencoded({extended:false}));
@@ -20,7 +20,7 @@ db.once('open', function() {
     console.log('Tietokantayhteys avattu');
 })
 
-app.get('/gamelibrary', function(req,res) {
+app.get('/gamelibrary', function(req,res) {     //gamelibrary on MongoDb tietokannan nimi
     game.find(req.query, function( err, result) {
         if (err) {
             res.send(err)
@@ -30,13 +30,13 @@ app.get('/gamelibrary', function(req,res) {
     })
     })
 
-app.post('/newGame', function (req, res) {
+app.post('/newGame', function (req, res) {     //Uuden pelin tallennus
     delete req.body._id; 
     db.collection('gamelibrary').insertOne(req.body);
     res.send('Game is added with following data: ' + JSON.stringify(req.body));
 })
 
-app.post('/deleteGame', function (req, res) {
+app.post('/deleteGame', function (req, res) {      //Pelin poisto taulukosta ja MongoDb:stä
     db.collection('gamelibrary').deleteOne( { _id: new mongodb.ObjectId(req.body._id)}, function( err, result){
         if ( err ) {
             res.send('Error deleting with following data: ' + err);
@@ -47,8 +47,8 @@ app.post('/deleteGame', function (req, res) {
    
 })
 
-app.post('/updateGame', function(req,res){
-    db.collection('gamelibrary').updateOne({_id:new mongodb.ObjectID(req.body._id)},{$set:{name:req.body.name, publisher:req.body.publisher, platform:req.body.platform, added:req.body.added, genre:req.body.genre, details:req.body.details, released:req.body.released}},function(err,results){
+app.post('/updateGame', function(req,res){     //Pelitietojen päivitys
+    db.collection('gamelibrary').updateOne({_id:new mongodb.ObjectId(req.body._id)},{$set:{name:req.body.name, publisher:req.body.publisher, platform:req.body.platform, added:req.body.added, genre:req.body.genre, details:req.body.details, released:req.body.released}},function(err,results){
         if ( err ) {
             res.send('Error updating: ' + err);
         } else {

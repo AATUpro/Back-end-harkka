@@ -1,4 +1,4 @@
-form {
+form {   /*Tietotaulukon/ lomakkeen tyylimuutokset */ 
     margin: 50px;
     text-align: center;
     font-size: 20px;
@@ -6,23 +6,23 @@ form {
     font-family: "Courier New", Courier, monospace;
     background-image: url("logot.png");
 }
-td {
+td {    /*Luo taulukon tietojen ympärille */ 
     border: 1px solid rgb(255, 255, 255);
     padding: 5px;
     background-image: url("red.png");
     background-size: 500px;
 }
-body {
+body {  /*Html taustan muutokset */ 
     background: rgb(179, 52, 37);
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     background-image: url("tausta.png");
     background-size: 2000px;
 }
-head {
+head {  /*Otsikon muutos */ 
     font-size: 100px;
 }
-h1 {
+h1 {    /*h tekstien tyylimuutokset */ 
     color: rgb(255, 255, 255);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -72,7 +72,7 @@ h6 {
     font-size: 20px;
     padding-top: 200px;
 }
-ul.bordered {
+ul.bordered { /*Linkki-laatikoiden tyylimuutokset */ 
     border: 2px solid rgb(255, 255, 255);
     padding: 20px;
     text-align: center;
@@ -82,7 +82,7 @@ ul.bordered {
     margin-left: 1000px;
     font-size: 20px;
 }
-li.bordered {
+li.bordered {   /*Tietotekstin tyylimuutokset */ 
     border: 5px solid rgba(0, 0, 0, 0.842);
     border-radius: 20px 20px 20px;
     border-style: double;
@@ -93,14 +93,14 @@ li.bordered {
     display: inline;
     height: auto;
 }
-li.bordered:hover {
+li.bordered:hover { /*Tekstin varjostus */ 
     background-color: rgb(255, 255, 255);
 }
-li {
+li {        /*Tietotekstin tyylimuutokset */
     text-align: center;
     font-size: 17px;
 }
-div {
+div {       /*Tietotekstin tyylimuutokset */
     border: 4px solid rgb(0, 0, 0);
     border-radius: 20px 20px 20px;
     padding: 30px;
@@ -108,22 +108,22 @@ div {
     margin: 50px;
     font-size: 20px;
 }
-p.yellow {
+p.yellow {  /*Tietotekstin tyylimuutokset */
     color: rgb(255, 255, 255);
     font-style: oblique;
     font-size: 30px;
 }
-p.black {
+p.black {   /*Tietotekstin tyylimuutokset */
     color: rgb(255, 255, 255);
     font-style: oblique;
     font-size: 30px;
 }
-p {
+p {         /*Tietotekstin tyylimuutokset */
     color: rgb(255, 255, 255);
     font-size: 140%;
     font-style: oblique;
 }
-.seloste {
+.seloste {  /*Tietotekstin tyylimuutokset */
     float: left;
     height: 300px;
     margin-top: 1%;
@@ -131,7 +131,7 @@ p {
     background-image: url("tausta.png");
     background-size: 2000px;
 }
-.tietoa {
+.tietoa {   /*Tietotekstin tyylimuutokset */
     float: left;
     height: 300px;
     margin-top: 1%;
@@ -142,12 +142,12 @@ p {
 .center {
     text-align: center;
 }
-a {
+a {         /*Tietotekstin tyylimuutokset */
     padding: 15px;
     width: 100%;
     text-decoration: none;
 }
-a:hover {
+a:hover {   /*Tekstin varjostus */
     text-shadow: 5px 8px 2px #3dff7e;
     -webkit-transition: all 2s linear;
     -moz-transition: all 2s linear;
@@ -155,25 +155,21 @@ a:hover {
     -o-transition: all 2s linear;
     transition: all 2s linear;
 }
-a:link {
+a:link {    /*Navigaatio tekstin väri */
     color: rgb(255, 255, 255);
 }
-a:visited {
+a:visited { /*Navigaation vierailtujen sivujen tekstin väri */
     color: rgb(0, 0, 0);
 }
-a:active {
+a:active {  /*Navigaation vierailtujen sivujen tekstin väri */
     color: rgb(255, 255, 255);
 }
-footer {
+footer {    /*Tekijän nimi sivun alaosassa*/
     color: rgb(0, 0, 0);
     margin: 20px;
     text-align: center;
 }
-figure {
-    float: left;
-    margin-top: auto;
-}
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {      /*Responsiivisuuteen liittyvät asetukset kuvakoossa */
     body {
         background-color: rgb(255, 255, 255);
     }

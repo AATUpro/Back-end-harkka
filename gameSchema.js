@@ -4,7 +4,7 @@ const gameSchema = mongoose.Schema;
 
 let game = new gameSchema ( {
     name: {
-      type: String
+      type: String  // Tässä on alekkain MongoDb kentät
     },
     publisher: {
       type: String

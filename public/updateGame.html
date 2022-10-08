@@ -14,7 +14,7 @@
           </h1>
         </header>
         <nav class="center">
-          <ul>
+          <ul> <!--Navigaatio-->
             <li class="bordered">
               <a href="index.html">Aloitus</a>
             </li>
@@ -27,7 +27,7 @@
           </ul>
         </nav>
         <main>
-        <form method="POST" action="/updateGame">
+        <form method="POST" action="/updateGame"> <!--Näyttää kentät millä pelitiedot voi päivittää-->
           <label for="name">Name<input type="text" name="name" id="name"</label>
           <label for="publisher">Publisher<input type="text" name="publisher" id="publisher"</label>
           <label for="platform">Platform<input type="text" name="platform" id="platform"</label>
@@ -35,12 +35,12 @@
           <label for="genre">Genre<input type="text" name="genre" id="genre"</label>
           <label for="details">Details<input type="text" name="details" id="details"</label>
           <label for="released">Released<input type="date" name="released" id="released"</label>
-          <input type="submit" value="Päivitä">
+          <input type="submit" value="Päivitä"> <!--Päivitys näppäin-->
         </form>
         </main>
-        <div id="demo"></div>
-        <footer>&copy;<strong>Aatu Inkiläinen</strong></footer>
-        <script src="update.js" async defer></script>
-        <script src="front.js" async defer></script>
+        <div id="demo"></div> <!--Näyttää jo tallennetut tiedot taulukkona-->
+        <footer>&copy;<strong>Aatu Inkiläinen</strong></footer> <!--Tekijän nimi sivun alaosassa-->
+        <script src="update.js" async defer></script> <!--Ottaa päivitys -toiminnallisuudet javascript tiedostosta-->
+        <script src="front.js" async defer></script> <!--Ottaa päivitys -toiminnallisuudet javascript tiedostosta-->
     </body>
 </html>
