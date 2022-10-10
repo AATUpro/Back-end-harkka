@@ -6,6 +6,7 @@ document.body.onload = function() { // Tässä on alekkain MongoDb kentät päiv
     document.getElementById('genre').value = getParam('genre');
     document.getElementById('details').value = getParam('details');
     document.getElementById('released').value = getParam('released');
+    document.getElementById('_id').value = getParam('_id');
 } 
 function getParam(param) {
     return new URLSearchParams(window.location.search).get(param);
